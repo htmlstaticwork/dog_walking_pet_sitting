@@ -28,12 +28,12 @@
                 <a href="services.html">Services</a>
                 <a href="bookings.html" class="active">Bookings</a>
                 <a href="contact.html">Contact</a>
+                <a href="dashboard.html">Dashboard</a>
             </nav>
             <div class="header-actions">
                 <button class="toggle-btn" id="rtl-toggle" title="Switch Direction">RTL</button>
                 <button class="toggle-btn" id="theme-toggle" title="Toggle Theme"><i data-lucide="moon"></i></button>
                 <a href="signup.html" class="btn btn-secondary">Sign Up</a>
-                <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
                 <button class="mobile-menu-btn toggle-btn" id="mobile-menu-toggle"><i data-lucide="menu"></i></button>
             </div>
         </div>
@@ -55,16 +55,16 @@
         <!-- Booking Form Section -->
         <section class="section-padding">
             <div class="container">
-                <div class="hero-grid" style="grid-template-columns: 1.2fr 0.8fr; gap: 4rem;">
+                <div class="hero-grid" style="gap: 4rem;">
                     <!-- Form Side -->
                     <div class="animate-slide-up">
-                        <div class="card" style="padding: 3rem; box-shadow: var(--shadow-xl);">
+                        <div class="card booking-card" style="box-shadow: var(--shadow-xl);">
                             <h2 style="margin-bottom: 2rem; display: flex; align-items: center; gap: 0.5rem;">
                                 <i data-lucide="calendar-plus" style="color: var(--primary);"></i>
                                 Schedule a Visit
                             </h2>
                             <form id="booking-form" style="display: grid; gap: 1.5rem;">
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div class="form-row">
                                     <div class="form-group">
                                         <label for="pet-name">Pet's Name</label>
                                         <input type="text" id="pet-name" placeholder="E.g. Buddy" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-main); color: var(--text-main);">
@@ -81,7 +81,7 @@
                                     </div>
                                 </div>
 
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                                <div class="form-row">
                                     <div class="form-group">
                                         <label for="date">Preferred Date</label>
                                         <input type="date" id="date" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; background: var(--bg-main); color: var(--text-main);">

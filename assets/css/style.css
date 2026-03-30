@@ -296,6 +296,22 @@ footer {
     transform: translateX(5px);
 }
 
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+}
+.btn-outline {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+.btn-outline:hover {
+    background: white;
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
 .footer-bottom {
     padding-top: 2.5rem;
     border-top: 1px solid var(--border);
@@ -421,7 +437,16 @@ footer {
 }
 
 
-/* --- Badges --- */
+.features-subgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
 .badge {
     display: inline-block;
     padding: 0.5rem 1rem;
@@ -436,6 +461,14 @@ footer {
 }
 
 /* --- Cards --- */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+.booking-card {
+    padding: 3rem;
+}
 .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
@@ -458,18 +491,21 @@ footer {
 }
 
 /* --- Responsive Utilities --- */
-@media (min-width: 1024px) {
+@media (min-width: 1201px) {
     .mobile-only-actions {
         display: none !important;
     }
 }
+
+
+
 
 .mobile-menu-btn {
     display: none;
     font-size: 1.5rem;
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
     .container {
         padding: 0 1rem;
     }
@@ -484,9 +520,6 @@ footer {
         align-items: center;
         justify-content: center;
     }
-    .desktop-only {
-        display: none !important;
-    }
     .hero-centered h1, .hero-content h1 {
         font-size: 3rem;
     }
@@ -494,6 +527,14 @@ footer {
         font-size: 1.2rem;
     }
 }
+
+@media (max-width: 1200px) {
+    .desktop-only {
+        display: none !important;
+    }
+}
+
+
 
 
 
@@ -503,7 +544,33 @@ footer {
         text-align: center;
     }
     .hero-btns {
-        justify-content: center;
+        flex-direction: column !important;
+        align-items: center;
+        gap: 0.75rem !important;
+    }
+    .hero-btns .btn {
+        width: 100%;
+        max-width: 320px;
+        text-align: center;
+    }
+    .features-subgrid {
+        grid-template-columns: 1fr;
+    }
+    .form-row {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+    }
+    .booking-card {
+        padding: 1.5rem 1.2rem !important;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        grid-auto-rows: auto !important;
+    }
+    .gallery-grid > .premium-card {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+        height: 300px !important;
     }
     .footer-grid {
         grid-template-columns: 1fr;

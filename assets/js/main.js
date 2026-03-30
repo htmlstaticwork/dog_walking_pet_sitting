@@ -53,9 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (navLinks && headerActions) {
         const signupBtn = headerActions.querySelector('.btn-secondary');
         const dashboardBtn = headerActions.querySelector('.btn-primary');
+        const themeBtnOrig = headerActions.querySelector('#theme-toggle');
+        const rtlBtnOrig = headerActions.querySelector('#rtl-toggle');
+        
         if (signupBtn && dashboardBtn) {
             signupBtn.classList.add('desktop-only');
             dashboardBtn.classList.add('desktop-only');
+            if(themeBtnOrig) themeBtnOrig.classList.add('desktop-only');
+            if(rtlBtnOrig) rtlBtnOrig.classList.add('desktop-only');
             
             const mobileActions = document.createElement('div');
             mobileActions.className = 'mobile-only-actions';
@@ -67,12 +72,38 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileActions.style.borderTop = '1px solid var(--border)';
             mobileActions.style.width = '100%';
             
+            // Toggle container (horizontal)
+            const toggleContainer = document.createElement('div');
+            toggleContainer.style.display = 'flex';
+            toggleContainer.style.gap = '1rem';
+            toggleContainer.style.marginBottom = '1.5rem';
+            
+            if (rtlBtnOrig) {
+                const rtlClone = rtlBtnOrig.cloneNode(true);
+                rtlClone.id = 'rtl-toggle-mobile';
+                rtlClone.classList.remove('desktop-only');
+                rtlClone.addEventListener('click', () => rtlBtnOrig.click());
+                toggleContainer.appendChild(rtlClone);
+            }
+            if (themeBtnOrig) {
+                const themeClone = themeBtnOrig.cloneNode(true);
+                themeClone.id = 'theme-toggle-mobile';
+                themeClone.classList.remove('desktop-only');
+                themeClone.addEventListener('click', () => themeBtnOrig.click());
+                toggleContainer.appendChild(themeClone);
+            }
+            mobileActions.appendChild(toggleContainer);
+            
             const signClone = signupBtn.cloneNode(true);
             const dashClone = dashboardBtn.cloneNode(true);
             signClone.classList.remove('desktop-only');
             dashClone.classList.remove('desktop-only');
             signClone.style.textAlign = 'center';
             dashClone.style.textAlign = 'center';
+            signClone.style.width = '250px';
+            dashClone.style.width = '250px';
+            signClone.style.alignSelf = 'center';
+            dashClone.style.alignSelf = 'center';
             
             mobileActions.appendChild(signClone);
             mobileActions.appendChild(dashClone);
@@ -147,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // CSS for Mobile Menu and Scroll-to-top integration
 const style = document.createElement('style');
 style.textContent = `
-    @media (max-width: 1100px) {
+    @media (max-width: 1200px) {
         .nav-links.active {
             display: flex !important;
             flex-direction: column;
@@ -155,6 +186,9 @@ style.textContent = `
             top: 80px;
             left: 0;
             width: 100%;
+            height: auto;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
             background: var(--bg-main);
             padding: 2.5rem;
             border-bottom: 1px solid var(--border);
@@ -163,6 +197,8 @@ style.textContent = `
             animation: fadeIn 0.3s ease;
             gap: 1.5rem;
         }
+
+
         .nav-links.active a {
             font-size: 1.5rem;
             font-weight: 800;
