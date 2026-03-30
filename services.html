@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Professional Pet Care by Petly</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Explore our range of professional pet care services, from daily dog walking to overnight pet sitting and specialized puppy care.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i data-lucide="paw-print"></i>
+                Petly
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home 1</a>
+                <a href="home2.html">Home 2</a>
+                <a href="about.html">About</a>
+                <a href="services.html" class="active">Services</a>
+                <a href="bookings.html">Bookings</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="toggle-btn" id="rtl-toggle">RTL</button>
+                <button class="toggle-btn" id="theme-toggle"><i data-lucide="moon"></i></button>
+                <a href="signup.html" class="btn btn-secondary">Sign Up</a>
+                <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+                <button class="mobile-menu-btn toggle-btn" id="mobile-menu-toggle"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Services Hero (Section 1) -->
+        <section class="hero-centered animate-fade" style="background-image: url('https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=1920&q=80'); min-height: 50vh;">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <h1 style="font-size: 4rem; color: white;">Our Professional <span style="color: var(--secondary);">Services</span></h1>
+                <p style="font-size: 1.4rem; color: rgba(255, 255, 255, 0.9);">Reliable, community-driven care tailored for every pet's personality.</p>
+            </div>
+        </section>
+
+        <!-- Core Services (Section 2) -->
+        <section class="section-padding">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <h2>Standard Care Offerings</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto;">We provide more than just a walk. We provide a tailored lifestyle for your pets.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="card">
+                        <i data-lucide="footprints" size="48" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
+                        <h3>Managed Walking</h3>
+                        <p style="color: var(--text-muted); margin: 1rem 0;">45-60 minute personalized walks with GPS tracking and digital reports.</p>
+                        <ul style="font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><i data-lucide="check" size="14"></i> Freshwater refills</li>
+                            <li><i data-lucide="check" size="14"></i> Paw cleaning</li>
+                            <li><i data-lucide="check" size="14"></i> Post-walk treat</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="home" size="48" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
+                        <h3>In-Home Sitting</h3>
+                        <p style="color: var(--text-muted); margin: 1rem 0;">Professional sitters who stay in your home or provide frequent visits.</p>
+                         <ul style="font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><i data-lucide="check" size="14"></i> Overnight security</li>
+                            <li><i data-lucide="check" size="14"></i> Feeding & meds</li>
+                            <li><i data-lucide="check" size="14"></i> Daily photo updates</li>
+                        </ul>
+                    </div>
+                    <div class="card">
+                        <i data-lucide="heart" size="48" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
+                        <h3>Specialized Puppy Care</h3>
+                        <p style="color: var(--text-muted); margin: 1rem 0;">Focused attention for growing pups who need socialization and routine.</p>
+                         <ul style="font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+                            <li><i data-lucide="check" size="14"></i> Potty training help</li>
+                            <li><i data-lucide="check" size="14"></i> Social play sessions</li>
+                            <li><i data-lucide="check" size="14"></i> Behavioral monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing (Section 3) -->
+        <section class="section-padding" style="background: var(--bg-alt);">
+            <div class="container">
+                 <div style="text-align: center; margin-bottom: 4rem;">
+                    <h2>Flexible Membership Plans</h2>
+                </div>
+                <!-- Mirroring the premium pricing table for consistency -->
+                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+                    <div class="card" style="padding: 3rem; background: var(--bg-main);">
+                        <h3>Essential</h3>
+                        <p style="font-size: 2.5rem; font-weight: 800; margin: 1.5rem 0;">$89<span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/mo</span></p>
+                        <ul style="margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted);">
+                            <li><i data-lucide="check" size="16"></i> 8 Walks per month</li>
+                            <li><i data-lucide="check" size="16"></i> Digital walk reports</li>
+                            <li><i data-lucide="check" size="16"></i> GPS Active tracking</li>
+                        </ul>
+                        <a href="signup.html" class="btn btn-secondary" style="width: 100%; text-align: center;">Get Started</a>
+                    </div>
+                    <div class="card" style="padding: 3rem; border: 2px solid var(--primary); box-shadow: var(--shadow-lg); background: var(--bg-main);">
+                        <span class="badge" style="background: var(--primary); color: white; border: none; margin-bottom: 1rem;">PREFERRED</span>
+                        <h3>Family Pack</h3>
+                        <p style="font-size: 2.5rem; font-weight: 800; margin: 1.5rem 0;">$249<span style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/mo</span></p>
+                        <ul style="margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <li><i data-lucide="check" size="16"></i> Unlimited Walks</li>
+                            <li><i data-lucide="check" size="16"></i> Weekly Grooming drop-off</li>
+                            <li><i data-lucide="check" size="16"></i> 24/7 Priority Messaging</li>
+                            <li><i data-lucide="check" size="16"></i> Multi-pet discount</li>
+                        </ul>
+                        <a href="signup.html" class="btn btn-primary" style="width: 100%; text-align: center;">Join Family</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ (Section 4) -->
+        <section class="section-padding">
+            <div class="container" style="max-width: 800px;">
+                 <h2 style="text-align: center; margin-bottom: 3rem;">Frequently Asked Questions</h2>
+                 <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <details class="card" style="cursor: pointer;">
+                        <summary style="font-weight: 700;">How are the walkers vetted?</summary>
+                        <p style="margin-top: 1rem; color: var(--text-muted);">Every walker is a community member who undergoes a multi-layer background check, behavioral assessment, and in-person orientation.</p>
+                    </details>
+                    <details class="card" style="cursor: pointer;">
+                        <summary style="font-weight: 700;">Can I meet my walker beforehand?</summary>
+                        <p style="margin-top: 1rem; color: var(--text-muted);">Absolutely! We require a free intro meeting to ensure both you and your pet are comfortable.</p>
+                    </details>
+                 </div>
+            </div>
+        </section>
+
+        <!-- CTA (Section 5) -->
+        <section class="section-padding" style="background: var(--primary); color: white; text-align: center;">
+            <div class="container">
+                <h2 style="font-size: 3rem; margin-bottom: 1.5rem;">Expert care is just a click away.</h2>
+                <a href="signup.html" class="btn" style="background: white; color: var(--primary); padding: 1.2rem 3rem; font-weight: 700;">Book Your First Walk</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo-section">
+                    <a href="index.html" class="logo">
+                        <i data-lucide="paw-print"></i>
+                        Petly
+                    </a>
+                    <div style="margin-top: auto;">
+                        <p>Community-focussed pet care. Trusted, fair, and reliable dog walking and pet sitting services.</p>
+                        <div class="social-icons">
+                            <a href="#" class="toggle-btn" title="Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                                </svg>
+                            </a>
+                            <a href="#" class="toggle-btn" title="X (Twitter)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 4l11.733 16H20L8.267 4z" />
+                                    <path d="M4 20l6.768-6.768m2.464-2.464L20 4" />
+                                </svg>
+                            </a>
+                            <a href="#" class="toggle-btn" title="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="bookings.html">Bookings</a></li>
+                        <li><a href="about.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Dog Walking</a></li>
+                        <li><a href="services.html">Pet Sitting</a></li>
+                        <li><a href="services.html">Puppy Care</a></li>
+                        <li><a href="bookings.html">Make a Booking</a></li>
+                        <li><a href="services.html">Emergency Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Trust</h4>
+                    <ul>
+                        <li><a href="login.html">Member Dashboard</a></li>
+                        <li><a href="about.html">Safety Policy</a></li>
+                        <li><a href="about.html">Walker Vetting</a></li>
+                        <li><a href="about.html">Co-op Governance</a></li>
+                        <li><a href="contact.html">Support FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Petly. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

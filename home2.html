@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Petly | Elite Dog Walking & Sitting</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description"
+        content="Experience the gold standard in pet care. Premium, community-driven co-op for your most precious companions.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .premium-hero {
+            padding: 8rem 0;
+            background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.05), transparent);
+        }
+
+        .premium-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .premium-card > *:last-child {
+            margin-top: auto;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 30px 60px -20px rgba(79, 70, 229, 0.15);
+            border-color: var(--primary);
+        }
+
+        [data-theme="dark"] .premium-card {
+            background: rgba(30, 41, 59, 0.7);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .price-card {
+            border: 2px solid transparent;
+        }
+
+        .price-card.popular {
+            border-color: var(--primary);
+            position: relative;
+        }
+
+        .popular::after {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i data-lucide="paw-print"></i>
+                Petly
+            </a>
+            <nav class="nav-links">
+                <a href="index.html">Home 1</a>
+                <a href="home2.html" class="active">Home 2</a>
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="bookings.html">Bookings</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="header-actions">
+                <button class="toggle-btn" id="rtl-toggle" title="Switch Direction">RTL</button>
+                <button class="toggle-btn" id="theme-toggle" title="Toggle Theme"><i data-lucide="moon"></i></button>
+                <a href="signup.html" class="btn btn-secondary">Sign Up</a>
+                <a href="dashboard.html" class="btn btn-primary">Dashboard</a>
+                <button class="mobile-menu-btn toggle-btn" id="mobile-menu-toggle"><i data-lucide="menu"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section (Section 1) -->
+        <section class="hero-centered animate-fade" style="background-image: url('https://images.pexels.com/photos/30268669/pexels-photo-30268669.jpeg'); min-height: 80vh; width: 100vw; margin-left: calc(-50vw + 50%);">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <span class="badge" style="background: var(--primary); color: white; border: none;">ELITE EDITION</span>
+                <h1 style="margin-top: 1.5rem; color: white;">The Gold Standard <span
+                        style="color: var(--secondary);">Pet Care</span></h1>
+                <p style="font-size: 1.4rem; color: rgba(255, 255, 255, 0.9); margin: 2rem auto 0; max-width: 800px;">Experience the most
+                    personalized, high-end pet care co-operative. Dedicated to the discerning pet owner.</p>
+                <div style="display: flex; gap: 1rem; margin-top: 2.5rem; justify-content: center;">
+                    <a href="signup.html" class="btn btn-primary" style="padding: 1.25rem 3rem;">Apply for Access</a>
+                    <a href="about.html" class="btn" style="background: transparent; color: white; border: 1px solid white; padding: 1.25rem 3rem;">Review Our Mission</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section class="section-padding" style="border-top: 1px solid var(--border);">
+            <div class="container" style="text-align: center;">
+                <p
+                    style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 3rem;">
+                    Trusted by families and local pet associations</p>
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; opacity: 0.5;">
+                    <i data-lucide="shield-check" size="48"></i>
+                    <i data-lucide="award" size="48"></i>
+                    <i data-lucide="medal" size="48"></i>
+                    <i data-lucide="verified" size="48"></i>
+                    <i data-lucide="star" size="48"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features (Section 3) -->
+        <section id="features" class="section-padding" style="background: var(--bg-alt);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                    <div class="hero-content">
+                        <span class="badge" style="background: white;">THE CO-OP ADVANTAGE</span>
+                        <h2>More than a walk.<br>A community bond.</h2>
+                        <ul style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                            <li style="display: flex; gap: 1rem; align-items: center;">
+                                <div
+                                    style="background: var(--primary); color: white; padding: 0.5rem; border-radius: 0.5rem;">
+                                    <i data-lucide="message-square" size="20"></i></div>
+                                <div>
+                                    <h4 style="font-weight: 600;">Direct Messaging</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;">Chat with your assigned
+                                        walker anytime through our secure dashboard.</p>
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 1rem; align-items: center;">
+                                <div
+                                    style="background: var(--primary); color: white; padding: 0.5rem; border-radius: 0.5rem;">
+                                    <i data-lucide="map-pin" size="20"></i></div>
+                                <div>
+                                    <h4 style="font-weight: 600;">GPS Tracking</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;">Real-time updates and maps
+                                        for every walk so you know where they go.</p>
+                                </div>
+                            </li>
+                            <li style="display: flex; gap: 1rem; align-items: center;">
+                                <div
+                                    style="background: var(--primary); color: white; padding: 0.5rem; border-radius: 0.5rem;">
+                                    <i data-lucide="camera" size="20"></i></div>
+                                <div>
+                                    <h4 style="font-weight: 600;">Photo Gallery</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.9rem;">Receive happy photos of your
+                                        pets directly to your notifications.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                        <div class="premium-card" style="padding: 3rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 220px;">
+                            <i data-lucide="zap" size="40" style="color: var(--secondary); margin-bottom: 1.5rem; stroke-width: 2.5;"></i>
+                            <h4 style="font-size: 1.25rem;">Instant Booking</h4>
+                        </div>
+                        <div class="premium-card" style="padding: 3rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 220px;">
+                            <i data-lucide="clock" size="40" style="color: var(--secondary); margin-bottom: 1.5rem; stroke-width: 2.5;"></i>
+                            <h4 style="font-size: 1.25rem;">24/7 Priority</h4>
+                        </div>
+                        <div class="premium-card" style="padding: 3rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 220px;">
+                            <i data-lucide="shield" size="40" style="color: var(--secondary); margin-bottom: 1.5rem; stroke-width: 2.5;"></i>
+                            <h4 style="font-size: 1.25rem;">Fully Insured</h4>
+                        </div>
+                        <div class="premium-card" style="padding: 3rem 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 220px;">
+                            <i data-lucide="users" size="40" style="color: var(--secondary); margin-bottom: 1.5rem; stroke-width: 2.5;"></i>
+                            <h4 style="font-size: 1.25rem;">Co-op Owned</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing (Section 4) -->
+        <section class="section-padding">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <h2>Transparent Membership</h2>
+                    <p style="color: var(--text-muted); margin-top: 1rem;">Choose a plan that fits your family's needs.
+                    </p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="premium-card price-card">
+                        <h3>Community</h3>
+                        <p style="font-size: 2.5rem; font-weight: 700; margin: 1.5rem 0;">$49<span
+                                style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/month</span></p>
+                        <ul
+                            style="margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted);">
+                            <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check"
+                                     size="16"></i> 5 Walks included</li>
+                            <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check"
+                                     size="16"></i> Standard Dashboard</li>
+                            <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check"
+                                     size="16"></i> Weekly Reports</li>
+                        </ul>
+                        <a href="signup.html" class="btn btn-secondary"
+                            style="width: 100%; display: block; text-align: center;">Get Started</a>
+                    </div>
+                    <div class="premium-card price-card popular">
+                        <h3>Preferred</h3>
+                        <p style="font-size: 2.5rem; font-weight: 700; margin: 1.5rem 0;">$149<span
+                                style="font-size: 1rem; font-weight: 400; color: var(--text-muted);">/month</span></p>
+                        <ul
+                            style="margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted);">
+                            <li
+                                style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main); font-weight: 600;">
+                                <i data-lucide="check" size="16"></i> Unlimited Walks</li>
+                            <li
+                                style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main); font-weight: 600;">
+                                <i data-lucide="check" size="16"></i> Priority Messaging</li>
+                            <li
+                                style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main); font-weight: 600;">
+                                <i data-lucide="check" size="16"></i> GPS Active Tracking</li>
+                            <li
+                                style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main); font-weight: 600;">
+                                <i data-lucide="check" size="16"></i> 10% Pet Store Discount</li>
+                        </ul>
+                        <a href="signup.html" class="btn btn-primary"
+                            style="width: 100%; display: block; text-align: center;">Join Circle</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials (Section 5) -->
+        <section class="section-padding" style="background: var(--bg-alt);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <h2>The Voice of Our Members</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="premium-card">
+                        <div style="display: flex; color: #fbbf24; margin-bottom: 1rem;">
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                        </div>
+                        <p style="font-style: italic; color: var(--text-muted);">"The level of care and technology they
+                            use is unmatched. My Lab, Buddy, absolutely loves his walker and I love the photo updates
+                            throughout the day."</p>
+                        <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 48px; height: 48px; background: #e2e8f0; border-radius: 50%;"></div>
+                            <div>
+                                <h4 style="font-size: 0.95rem;">Sarah Mitchell</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="premium-card">
+                        <div style="display: flex; color: #fbbf24; margin-bottom: 1rem;">
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                            <i data-lucide="star" size="16" fill="#fbbf24"></i>
+                        </div>
+                        <p style="font-style: italic; color: var(--text-muted);">"Joining the co-op was the best
+                            decision for my work-life balance. Reliable service, affordable community rates, and honest
+                            care."</p>
+                        <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
+                            <div style="width: 48px; height: 48px; background: #cbd5e1; border-radius: 50%;"></div>
+                            <div>
+                                <h4 style="font-size: 0.95rem;">James Wilson</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted);">Small Biz Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- Gallery Section (Section 6) -->
+        <section class="section-padding" style="background: var(--bg-main);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 4rem;">
+                    <span class="badge">LATEST CAPTURES</span>
+                    <h2 style="margin-top: 1rem;">Moments from the Co-op</h2>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto;">A glimpse into the daily joy we bring to your pet's life through our expert care.</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 250px; gap: 1.5rem;">
+                    <div class="premium-card" style="grid-column: span 2; grid-row: span 2; padding: 0; overflow: hidden; border: none;">
+                        <img src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg" alt="Dogs playing" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="premium-card" style="padding: 0; overflow: hidden; border: none;">
+                        <img src="https://images.pexels.com/photos/164186/pexels-photo-164186.jpeg" alt="Cat lounging" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="premium-card" style="padding: 0; overflow: hidden; border: none;">
+                        <img src="https://images.pexels.com/photos/58997/pexels-photo-58997.jpeg" alt="Puppy running" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="premium-card" style="grid-column: span 2; padding: 0; overflow: hidden; border: none;">
+                        <img src="https://images.pexels.com/photos/1851164/pexels-photo-1851164.jpeg" alt="Pug" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section (Section 7) -->
+        <section class="section-padding" style="background: var(--bg-alt);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start;">
+                    <div>
+                        <span class="badge">KNOWLEDGE BASE</span>
+                        <h2 style="margin-top: 1rem; font-size: 2.5rem;">Frequently Asked <span style="color: var(--primary);">Questions</span></h2>
+                        <p style="color: var(--text-muted); margin-top: 1.5rem;">Can't find the answer you're looking for? Reach out to our 24/7 support concierge for elite assistance.</p>
+                        <a href="contact.html" class="btn btn-primary" style="margin-top: 2rem;">Contact Concierge</a>
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <details class="premium-card" style="cursor: pointer; padding: 1.5rem 2rem;">
+                            <summary style="font-weight: 700; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                                What vetting process do your Elite Walkers undergo?
+                                <i data-lucide="chevron-down" size="18"></i>
+                            </summary>
+                            <div style="margin-top: 1.5rem; color: var(--text-muted); line-height: 1.7;">
+                                Every elite walker undergoes a multi-layer process including a federal background check, a pet psychology assessment, and a mandatory 40-hour field residency with a senior co-op mentor.
+                            </div>
+                        </details>
+                        <details class="premium-card" style="cursor: pointer; padding: 1.5rem 2rem;">
+                            <summary style="font-weight: 700; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                                Can I request the same walker for every session?
+                                <i data-lucide="chevron-down" size="18"></i>
+                            </summary>
+                            <div style="margin-top: 1.5rem; color: var(--text-muted); line-height: 1.7;">
+                                Consistency is the cornerstone of our service. Our Elite members are assigned a primary and secondary walker to ensure your pet builds a deep, lasting bond with a familiar face.
+                            </div>
+                        </details>
+                        <details class="premium-card" style="cursor: pointer; padding: 1.5rem 2rem;">
+                            <summary style="font-weight: 700; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                                How does the GPS real-time tracking work?
+                                <i data-lucide="chevron-down" size="18"></i>
+                            </summary>
+                            <div style="margin-top: 1.5rem; color: var(--text-muted); line-height: 1.7;">
+                                Through our proprietary member dashboard, you can follow your pet's precise path, view heart-rate data (if wearing a compatible tracker), and receive instant "paws-on-the-ground" notifications.
+                            </div>
+                        </details>
+                        <details class="premium-card" style="cursor: pointer; padding: 1.5rem 2rem;">
+                            <summary style="font-weight: 700; font-size: 1.1rem; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                                Is my home insured during pet sitting?
+                                <i data-lucide="chevron-down" size="18"></i>
+                            </summary>
+                            <div style="margin-top: 1.5rem; color: var(--text-muted); line-height: 1.7;">
+                                Every visit is protected by our $5M comprehensive liability policy, which covers both your pets and your property, providing absolute peace of mind while you are away.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo-section">
+                    <a href="index.html" class="logo">
+                        <i data-lucide="paw-print"></i>
+                        Petly
+                    </a>
+                    <div style="margin-top: auto;">
+                        <p>Community-focussed pet care. Trusted, fair, and reliable dog walking and pet sitting services.</p>
+                        <div class="social-icons">
+                            <a href="#" class="toggle-btn" title="Facebook">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                            </a>
+                            <a href="#" class="toggle-btn" title="X (Twitter)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M4 4l11.733 16H20L8.267 4z" />
+                                    <path d="M4 20l6.768-6.768m2.464-2.464L20 4" />
+                                </svg>
+                            </a>
+                            <a href="#" class="toggle-btn" title="Instagram">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="bookings.html">Bookings</a></li>
+                        <li><a href="about.html">Our Mission</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Dog Walking</a></li>
+                        <li><a href="services.html">Pet Sitting</a></li>
+                        <li><a href="services.html">Puppy Care</a></li>
+                        <li><a href="bookings.html">Make a Booking</a></li>
+                        <li><a href="services.html">Emergency Care</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Trust</h4>
+                    <ul>
+                        <li><a href="login.html">Member Dashboard</a></li>
+                        <li><a href="about.html">Safety Policy</a></li>
+                        <li><a href="about.html">Walker Vetting</a></li>
+                        <li><a href="about.html">Co-op Governance</a></li>
+                        <li><a href="contact.html">Support FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Petly. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>

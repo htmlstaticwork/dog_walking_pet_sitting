@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petly | Professional Member Dashboard</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Manage your pet care services, book professional walkers, and communicate with your assigned caregivers through the Petly dashboard.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --sidebar-width: 280px;
+            --topbar-height: 80px;
+            --sidebar-bg: var(--card-bg);
+            --content-bg: var(--bg-alt);
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: var(--content-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- Custom Sidebar --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            transition: var(--transition);
+        }
+
+        [dir="rtl"] .sidebar {
+            left: auto;
+            right: 0;
+            border-right: none;
+            border-left: 1px solid var(--border);
+        }
+
+        .sidebar-brand {
+            height: var(--topbar-height);
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius);
+            color: var(--text-muted);
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            background: transparent;
+            border: none;
+            width: 100%;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary);
+            background: var(--bg-alt);
+        }
+
+        .sidebar-footer {
+            padding: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* --- Main Content --- */
+        .dashboard-main {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+
+        [dir="rtl"] .dashboard-main {
+            margin-left: 0;
+            margin-right: var(--sidebar-width);
+        }
+
+        .topbar {
+            height: var(--topbar-height);
+            background: var(--sidebar-bg);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 90;
+        }
+
+        .dashboard-content {
+            padding: 2.5rem;
+            flex: 1;
+        }
+
+        /* --- Dashboard Components --- */
+        .dash-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 2rem;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .pet-badge {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* --- Tab Transitions --- */
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* --- Accessibility --- */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        button:focus-visible, a:focus-visible {
+            outline: 3px solid var(--primary);
+            outline-offset: 4px;
+        }
+
+        /* --- Messaging --- */
+        .chat-hub {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            height: 700px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 2rem;
+            overflow: hidden;
+        }
+
+        .chat-sidebar {
+            background: var(--bg-alt);
+            border-right: 1px solid var(--border);
+            padding: 1.5rem;
+        }
+
+        .message-thread {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .messages-area {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .msg-bubble {
+            max-width: 75%;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .msg-bubble.sent {
+            align-self: flex-end;
+            background: var(--primary);
+            color: white;
+            border-bottom-right-radius: 0.25rem;
+        }
+
+        .msg-bubble.received {
+            align-self: flex-start;
+            background: var(--bg-alt);
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        /* --- Tablet & Mobile --- */
+        @media (max-width: 1199px) {
+            .sidebar {
+                width: 80px;
+                padding: 0;
+                align-items: center;
+            }
+            .sidebar-brand { justify-content: center; padding: 0; }
+            .sidebar-brand span, .nav-link span, .sidebar-footer span { display: none; }
+            .dashboard-main { margin-left: 80px; }
+            [dir="rtl"] .dashboard-main { margin-right: 80px; }
+            .booking-form { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 767px) {
+            .sidebar { transform: translateX(-100%); }
+            [dir="rtl"] .sidebar { transform: translateX(100%); }
+            .dashboard-main { margin-left: 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#dash-start" class="sr-only">Skip to content</a>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="dashboard-sidebar" role="navigation" aria-label="Main Dash Navigation">
+        <div class="sidebar-brand">
+            <a href="index.html" class="logo" style="text-decoration:none;">
+                <i data-lucide="paw-print"></i>
+                <span>Petly</span>
+            </a>
+        </div>
+        <nav class="sidebar-nav">
+            <button class="nav-link active" data-tab="overview" role="tab" aria-selected="true">
+                <i data-lucide="layout-dashboard"></i> <span>Dashboard Overview</span>
+            </button>
+            <button class="nav-link" data-tab="mypets" role="tab" aria-selected="false">
+                <i data-lucide="dog"></i> <span>Manage Pets</span>
+            </button>
+            <button class="nav-link" data-tab="bookings" role="tab" aria-selected="false">
+                <i data-lucide="calendar"></i> <span>Book a Walk</span>
+            </button>
+            <button class="nav-link" data-tab="walkerhub" role="tab" aria-selected="false">
+                <i data-lucide="user-check"></i> <span>My Walkers</span>
+            </button>
+            <button class="nav-link" data-tab="messages" role="tab" aria-selected="false">
+                <i data-lucide="message-square"></i> <span>Messaging</span>
+            </button>
+            <button class="nav-link" data-tab="profile" role="tab" aria-selected="false">
+                <i data-lucide="settings"></i> <span>Account Settings</span>
+            </button>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="nav-link" onclick="window.location.href='index.html'" style="color: #ef4444;">
+                <i data-lucide="log-out"></i> <span>Sign Out</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Dashboard -->
+    <main class="dashboard-main" id="dash-start">
+        <!-- Topbar -->
+        <header class="topbar">
+            <button class="toggle-btn" id="mobile-sidebar-toggle" style="display:none;" aria-label="Open Sidebar">
+                <i data-lucide="menu"></i>
+            </button>
+            <h1 id="tab-title" style="font-size:1.5rem; font-family:'Outfit',sans-serif;">Dashboard Overview</h1>
+            <div style="display: flex; align-items: center; gap: 1.5rem;">
+                <div style="display:flex; gap:0.5rem;">
+                    <button class="toggle-btn" id="rtl-toggle" aria-label="Switch Direction">RTL</button>
+                    <button class="toggle-btn" id="theme-toggle" aria-label="Toggle Dark Mode">
+                        <i data-lucide="moon"></i>
+                    </button>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem; padding-left: 1.5rem; border-left: 1px solid var(--border);">
+                    <div style="text-align: right;">
+                        <p style="font-size: 0.9rem; font-weight: 700;">Sarah Mitchell</p>
+                        <p style="font-size: 0.75rem; color: var(--text-muted);">Premium Member</p>
+                    </div>
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah's Profile" style="width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary);">
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="dashboard-content">
+            
+            <!-- OVERVIEW PANEL -->
+            <section id="overview" class="tab-panel active" role="tabpanel">
+                <!-- Dashboard Hero Banner -->
+                <div class="dash-card" style="background-image: url('https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center; min-height: 200px; display: flex; align-items: center; padding: 3rem; margin-bottom: 2.5rem; position: relative; border: none; overflow: hidden; color: white;">
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(15,23,42,0.8), transparent); z-index: 1;"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <h2 style="font-size: 2rem; color: white;">Welcome Back, Sarah!</h2>
+                        <p style="font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem;">Your pets are happy and scheduled for their afternoon walks.</p>
+                        <button class="btn btn-primary" style="margin-top: 1.5rem; background: white; color: var(--primary); font-weight: 700;">Check Wallet Balance</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <article class="dash-card" style="border-top: 5px solid var(--primary);">
+                        <h2 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Upcoming Walk</h2>
+                        <p style="font-size: 1.5rem; margin-top: 1rem;">2:30 PM Today</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">60-minute session with <strong>Buddy</strong></p>
+                    </article>
+                    <article class="dash-card" style="border-top: 5px solid #10b981;">
+                        <h2 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Pet Health Status</h2>
+                        <p style="font-size: 1.5rem; margin-top: 1rem; color: #10b981;">Perfect Paws</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">All vaccines up to date</p>
+                    </article>
+                    <article class="dash-card">
+                        <h2 style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted);">Co-op Balance</h2>
+                        <p style="font-size: 1.5rem; margin-top: 1rem;">$12.50 Credit</p>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Next billing in 12 days</p>
+                    </article>
+                </div>
+
+                <div class="dash-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h2>Recent Activity</h2>
+                        <button class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">View All Activity</button>
+                    </div>
+                    <ul style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <li style="display: flex; gap: 1.5rem; align-items: center;">
+                            <div style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 0.75rem; border-radius: 1rem;"><i data-lucide="check-circle" size="24"></i></div>
+                            <div>
+                                <p style="font-weight: 600;">Walk Completed</p>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Alex finished a 45m walk with Buddy at Central Park Terrace.</p>
+                            </div>
+                            <time style="margin-left: auto; font-size: 0.8rem; color: var(--text-muted);">2h ago</time>
+                        </li>
+                        <li style="display: flex; gap: 1.5rem; align-items: center;">
+                            <div style="background: rgba(79, 70, 229, 0.1); color: var(--primary); padding: 0.75rem; border-radius: 1rem;"><i data-lucide="camera" size="24"></i></div>
+                            <div>
+                                <p style="font-weight: 600;">Photo Received</p>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">You received 3 new photos from Luna's morning sitting session.</p>
+                            </div>
+                            <time style="margin-left: auto; font-size: 0.8rem; color: var(--text-muted);">5h ago</time>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- MY PETS PANEL -->
+            <section id="mypets" class="tab-panel" role="tabpanel">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.5rem;">
+                    <h2>Your Furry Family</h2>
+                    <button class="btn btn-primary"><i data-lucide="plus" size="18" style="margin-right:0.5rem;"></i> Register New Pet</button>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+                    <article class="dash-card" style="display: flex; gap: 1.5rem;">
+                        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Buddy" alt="Buddy the dog" style="width: 100px; height: 100px; border-radius: 2rem; background: var(--bg-alt);">
+                        <div>
+                            <h3>Buddy</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Golden Retriever • 4 Years</p>
+                            <span class="pet-badge">Standard Walking Plan</span>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Profile Specs</button>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;"><i data-lucide="edit-3" size="14"></i></button>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="dash-card" style="display: flex; gap: 1.5rem;">
+                        <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Luna" alt="Luna the cat" style="width: 100px; height: 100px; border-radius: 2rem; background: var(--bg-alt);">
+                        <div>
+                            <h3>Luna</h3>
+                            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Maine Coon • 2 Years</p>
+                            <span class="pet-badge">Home Sitting Only</span>
+                            <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Profile Specs</button>
+                                <button class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.8rem;"><i data-lucide="edit-3" size="14"></i></button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- BOOKING PANEL -->
+            <section id="bookings" class="tab-panel" role="tabpanel">
+                <div class="dash-card">
+                    <h2 style="margin-bottom: 2rem;">Schedule a Managed Service</h2>
+                    <form class="booking-form" onsubmit="return false;">
+                        <div class="input-group">
+                            <label for="select-pet">Which pet is going?</label>
+                            <select id="select-pet">
+                                <option>Buddy</option>
+                                <option>Luna</option>
+                                <option>Both</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="service-type">Service Type</label>
+                            <select id="service-type">
+                                <option>Dog Walking (60m)</option>
+                                <option>Pet Sitting Visit</option>
+                                <option>Overnight Stay</option>
+                                <option>Grooming Drop-off</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="walk-date">Date</label>
+                            <input type="date" id="walk-date">
+                        </div>
+                        <div class="input-group">
+                            <label for="walk-time">Preferred Start Time</label>
+                            <input type="time" id="walk-time">
+                        </div>
+                        <div class="input-group" style="grid-column: 1 / -1;">
+                            <label for="special-notes">Safety & Access Notes</label>
+                            <textarea id="special-notes" rows="4" placeholder="Any special needs, doorbell issues, or food requirements?"></textarea>
+                        </div>
+                        <button class="btn btn-primary" style="grid-column: 1 / -1; padding: 1rem;">Confirm Service Booking</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- WALKER HUB PANEL -->
+            <section id="walkerhub" class="tab-panel" role="tabpanel">
+                <div class="stats-grid">
+                    <div class="dash-card text-center" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Alex Riviera" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--primary); margin-bottom: 1.5rem;">
+                        <h3>Alex Riviera</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Lead Walker • Member since '22</p>
+                        <div style="display:flex; color: #f59e0b; margin: 1rem 0;">
+                            <i data-lucide="star" fill="#f59e0b" size="16"></i>
+                            <i data-lucide="star" fill="#f59e0b" size="16"></i>
+                            <i data-lucide="star" fill="#f59e0b" size="16"></i>
+                            <i data-lucide="star" fill="#f59e0b" size="16"></i>
+                            <i data-lucide="star" fill="#f59e0b" size="16"></i>
+                        </div>
+                        <p style="font-size: 0.85rem; max-width: 250px;">"Certified professional who specializes in reactive dogs and distance trail walks."</p>
+                        <button class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">Message Alex</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MESSAGING PANEL -->
+            <section id="messages" class="tab-panel" role="tabpanel">
+                <div class="chat-hub">
+                    <div class="chat-sidebar">
+                        <div style="font-weight: 700; margin-bottom: 1.5rem;">Direct Messaging</div>
+                        <div style="background: var(--card-bg); border-left: 4px solid var(--primary); padding: 1.25rem; border-radius: 1rem; display: flex; align-items: center; gap: 1rem; cursor: pointer; margin-bottom: 1rem;">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <p style="font-weight: 600; font-size: 0.9rem;">Alex Riviera</p>
+                                <p style="font-size: 0.75rem; color: #10b981;">Walking Buddy Now</p>
+                            </div>
+                        </div>
+                        <div style="padding: 1.25rem; border-radius: 1rem; display: flex; align-items: center; gap: 1rem; cursor: pointer; opacity: 0.6;">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Maya" style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <p style="font-weight: 600; font-size: 0.9rem;">Maya Chen</p>
+                                <p style="font-size: 0.75rem; color: var(--text-muted);">Last seen 2d ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-thread">
+                        <div class="messages-area">
+                            <div class="msg-bubble received">Hi Sarah! I've just picked up Buddy. We are heading over to the park now.</div>
+                            <div class="msg-bubble received">He's very energetic today! We'll do a 60-minute active session.</div>
+                            <div class="msg-bubble sent">Perfect! Thanks Alex. Did he find his harness okay?</div>
+                            <div class="msg-bubble received">Yep, he was waiting right by the door with it. We are all set!</div>
+                        </div>
+                        <div style="padding: 1.5rem; border-top: 1px solid var(--border); display: flex; gap: 1rem;">
+                            <input type="text" placeholder="Type your message to Alex..." aria-label="Chat input" style="flex:1; padding: 1rem; border-radius: 1.5rem; border: 1px solid var(--border); background: var(--bg-alt); color: var(--text-main);">
+                            <button class="btn btn-primary" style="padding: 1rem 1.5rem;"><i data-lucide="send" size="20"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PROFILE/SETTINGS PANEL -->
+            <section id="profile" class="tab-panel" role="tabpanel">
+                <div class="dash-card" style="max-width: 700px;">
+                    <h2 style="margin-bottom: 2rem;">Profile & Notification Settings</h2>
+                    <form class="booking-form" style="grid-template-columns: 1fr;">
+                        <label style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-alt); border-radius: 1rem;">
+                            <span>Email Notifications for finished walks</span>
+                            <input type="checkbox" checked>
+                        </label>
+                        <label style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-alt); border-radius: 1rem;">
+                            <span>Push Notifications for new messages</span>
+                            <input type="checkbox" checked>
+                        </label>
+                        <label style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: var(--bg-alt); border-radius: 1rem;">
+                            <span>Share walk GPS tracking in real-time</span>
+                            <input type="checkbox">
+                        </label>
+                        <button class="btn btn-primary" style="margin-top: 1rem;">Save Account Changes</button>
+                    </form>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Tab Management Logic
+        const tabs = document.querySelectorAll('.nav-link[data-tab]');
+        const panels = document.querySelectorAll('.tab-panel');
+        const tabTitle = document.getElementById('tab-title');
+
+        const tabThemes = {
+            'overview': 'Dashboard Overview',
+            'mypets': 'Manage Your Pet Profiles',
+            'bookings': 'Book Managed Services',
+            'walkerhub': 'Walker Information Hub',
+            'messages': 'Messaging Center',
+            'profile': 'Account Preferences'
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+
+                // Update Sidebar UI
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+
+                // Update Panles
+                panels.forEach(p => p.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+
+                // Update Header
+                tabTitle.innerText = tabThemes[target];
+
+                // Auto Close Sidebar on Mobile
+                if (window.innerWidth < 768) {
+                    toggleSidebar(false);
+                }
+            });
+        });
+
+        // Mobile Sidebar Logic
+        const mobileToggle = document.getElementById('mobile-sidebar-toggle');
+        const sidebar = document.getElementById('dashboard-sidebar');
+
+        function toggleSidebar(show) {
+            if (show) {
+                sidebar.classList.add('mobile-open');
+                mobileToggle.innerHTML = '<i data-lucide="x"></i>';
+            } else {
+                sidebar.classList.remove('mobile-open');
+                mobileToggle.innerHTML = '<i data-lucide="menu"></i>';
+            }
+            if(window.lucide) window.lucide.createIcons();
+        }
+
+        mobileToggle.addEventListener('click', () => {
+            const isOpen = sidebar.classList.contains('mobile-open');
+            toggleSidebar(!isOpen);
+        });
+
+        // Re-init Lucide for all new elements
+        if(window.lucide) window.lucide.createIcons();
+    </script>
+</body>
+</html>

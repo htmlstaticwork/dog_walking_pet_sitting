@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Petly Member Access</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Secure access to your Petly account.">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: var(--bg-alt);
+        }
+        .auth-card {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 2rem;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+        }
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .auth-toggles {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+        [dir="rtl"] .auth-toggles {
+            right: auto;
+            left: 1.5rem;
+        }
+        .input-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            outline: none;
+            background: var(--bg-main);
+            color: var(--text-main);
+        }
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 2.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        [dir="rtl"] .password-toggle {
+            right: auto;
+            left: 1rem;
+        }
+        .auth-footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+        .divider::before { margin-right: 1rem; }
+        .divider::after { margin-left: 1rem; }
+    </style>
+</head>
+<body>
+    <div class="auth-toggles">
+        <button class="toggle-btn" id="rtl-toggle">RTL</button>
+        <button class="toggle-btn" id="theme-toggle"><i data-lucide="moon"></i></button>
+    </div>
+
+    <div class="auth-card animate-fade">
+        <div class="auth-header">
+            <a href="index.html" class="logo" style="justify-content: center; margin-bottom: 1rem;">
+                <i data-lucide="paw-print"></i>
+                Petly
+            </a>
+            <div style="margin-bottom: 1.5rem;">
+                <a href="index.html" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
+                    <i data-lucide="arrow-left" size="14"></i> Back to Home
+                </a>
+            </div>
+            <h2 style="font-size: 1.75rem;">Welcome Back</h2>
+            <p style="color: var(--text-muted);">Please enter your details</p>
+        </div>
+
+        <form onsubmit="window.location.href='dashboard.html'; return false;">
+            <div class="input-group">
+                <label for="email">Email address</label>
+                <input type="email" id="email" placeholder="example@email.com" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+                <i data-lucide="eye" class="password-toggle" id="togglePassword"></i>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; font-size: 0.9rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" style="width: auto;"> Remember me
+                </label>
+                <a href="#" style="color: var(--primary); font-weight: 600;">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.1rem; font-size: 1.1rem;">Log In</button>
+        </form>
+
+        <div class="divider">or continue with</div>
+
+        <button class="social-btn"><i data-lucide="chrome" size="20"></i> Google</button>
+        <button class="social-btn"><i data-lucide="apple" size="20"></i> Apple</button>
+
+        <div class="auth-footer">
+            Don't have an account? <a href="signup.html" style="color: var(--primary); font-weight: 700;">Sign up</a>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.getElementById('togglePassword')?.addEventListener('click', function (e) {
+            const password = document.getElementById('password');
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i data-lucide="eye"></i>' : '<i data-lucide="eye-off"></i>';
+            if(window.lucide) window.lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
