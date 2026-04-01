@@ -89,6 +89,12 @@
                 grid-template-columns: 1fr !important;
                 gap: 3rem !important;
             }
+            .responsive-grid > div:first-child {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
             .hero-centered h1 {
                  font-size: 3rem !important;
             }
@@ -301,37 +307,37 @@
                     <h2>The Voice of Our Members</h2>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div class="premium-card">
-                        <div style="display: flex; color: #fbbf24; margin-bottom: 1rem;">
+                    <div class="premium-card" style="text-align: center; align-items: center;">
+                        <div style="display: flex; justify-content: center; color: #fbbf24; margin-bottom: 1rem;">
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                         </div>
-                        <p style="font-style: italic; color: var(--text-muted);">"The level of care and technology they
+                        <p style="font-style: italic; color: var(--text-muted); max-width: 500px;">"The level of care and technology they
                             use is unmatched. My Lab, Buddy, absolutely loves his walker and I love the photo updates
                             throughout the day."</p>
-                        <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
+                        <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
                             <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Mitchell" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover;">
-                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                                 <h4 style="font-size: 0.95rem; margin: 0; line-height: 1.2;">Sarah Mitchell</h4>
                                 <p style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0; line-height: 1.2;">Member since 2024</p>
                             </div>
                         </div>
                     </div>
-                    <div class="premium-card">
-                        <div style="display: flex; color: #fbbf24; margin-bottom: 1rem;">
+                    <div class="premium-card" style="text-align: center; align-items: center;">
+                        <div style="display: flex; justify-content: center; color: #fbbf24; margin-bottom: 1rem;">
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                         </div>
-                        <p style="font-style: italic; color: var(--text-muted);">"Joining the co-op was the best decision for my work-life balance. Reliable service, affordable community rates, and honest care."</p>
-                        <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
+                        <p style="font-style: italic; color: var(--text-muted); max-width: 500px;">"Joining the co-op was the best decision for my work-life balance. Reliable service, affordable community rates, and honest care."</p>
+                        <div style="margin-top: 2rem; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
                             <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=James" alt="James Wilson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover;">
-                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
                                 <h4 style="font-size: 0.95rem; margin: 0; line-height: 1.2;">James Wilson</h4>
                                 <p style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0; line-height: 1.2;">Small Biz Owner</p>
                             </div>
