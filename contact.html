@@ -50,9 +50,10 @@
             border: 1px solid var(--border);
             margin-top: 4rem;
         }
-        @media (max-width: 767px) {
+        @media (max-width: 1024px) {
             .contact-container {
                 grid-template-columns: 1fr;
+                gap: 3rem;
             }
         }
     </style>
@@ -76,7 +77,7 @@
             <div class="header-actions">
                 <button class="toggle-btn" id="rtl-toggle">RTL</button>
                 <button class="toggle-btn" id="theme-toggle"><i data-lucide="moon"></i></button>
-                <a href="signup.html" class="btn btn-secondary">Sign Up</a>
+                <a href="signup.html" class="btn btn-secondary desktop-only">Sign Up</a>
                 <button class="mobile-menu-btn toggle-btn" id="mobile-menu-toggle"><i data-lucide="menu"></i></button>
             </div>
         </div>
@@ -156,7 +157,7 @@
                     <!-- Contact Form -->
                     <div class="card">
                         <form class="contact-form" onsubmit="return false;">
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                                 <div class="input-group">
                                     <label for="fname">First Name</label>
                                     <input type="text" id="fname" placeholder="Your name" required>

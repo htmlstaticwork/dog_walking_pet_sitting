@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        body {
+            overflow-x: hidden; /* Prevent horizontal scroll globally */
+        }
+
         .premium-hero {
             padding: 8rem 0;
             background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.05), transparent);
@@ -78,6 +82,44 @@
             font-weight: 700;
             border-radius: 100px;
         }
+
+        /* Responsive Fixes for Tab and Mobile */
+        @media (max-width: 1024px) {
+            .responsive-grid {
+                grid-template-columns: 1fr !important;
+                gap: 3rem !important;
+            }
+            .hero-centered h1 {
+                 font-size: 3rem !important;
+            }
+            /* Correcting the full-width hero calculation for smaller viewports */
+            .hero-centered {
+                width: 100% !important;
+                margin-left: 0 !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .premium-card {
+                padding: 1.5rem;
+            }
+            .hero-centered {
+                padding: 6rem 1.5rem !important;
+                min-height: auto !important;
+            }
+            .trust-logos {
+                gap: 2rem !important;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr !important;
+                grid-auto-rows: auto !important;
+            }
+            .gallery-grid div {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                height: 250px !important;
+            }
+        }
     </style>
 </head>
 
@@ -98,9 +140,9 @@
                 <a href="dashboard.html">Dashboard</a>
             </nav>
             <div class="header-actions">
-                <button class="toggle-btn" id="rtl-toggle" title="Switch Direction">RTL</button>
-                <button class="toggle-btn" id="theme-toggle" title="Toggle Theme"><i data-lucide="moon"></i></button>
-                <a href="signup.html" class="btn btn-secondary">Sign Up</a>
+                <button class="toggle-btn desktop-only" id="rtl-toggle" title="Switch Direction">RTL</button>
+                <button class="toggle-btn desktop-only" id="theme-toggle" title="Toggle Theme"><i data-lucide="moon"></i></button>
+                <a href="signup.html" class="btn btn-secondary desktop-only">Sign Up</a>
                 <button class="mobile-menu-btn toggle-btn" id="mobile-menu-toggle"><i data-lucide="menu"></i></button>
             </div>
         </div>
@@ -129,7 +171,7 @@
                 <p
                     style="text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 3rem;">
                     Trusted by families and local pet associations</p>
-                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; opacity: 0.5;">
+                <div class="trust-logos" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; opacity: 0.5;">
                     <i data-lucide="shield-check" size="48"></i>
                     <i data-lucide="award" size="48"></i>
                     <i data-lucide="medal" size="48"></i>
@@ -272,9 +314,9 @@
                             throughout the day."</p>
                         <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
                             <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Mitchell" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover;">
-                            <div>
-                                <h4 style="font-size: 0.95rem;">Sarah Mitchell</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted);">Member since 2024</p>
+                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                                <h4 style="font-size: 0.95rem; margin: 0; line-height: 1.2;">Sarah Mitchell</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0; line-height: 1.2;">Member since 2024</p>
                             </div>
                         </div>
                     </div>
@@ -286,14 +328,12 @@
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                             <i data-lucide="star" size="16" fill="#fbbf24"></i>
                         </div>
-                        <p style="font-style: italic; color: var(--text-muted);">"Joining the co-op was the best
-                            decision for my work-life balance. Reliable service, affordable community rates, and honest
-                            care."</p>
+                        <p style="font-style: italic; color: var(--text-muted);">"Joining the co-op was the best decision for my work-life balance. Reliable service, affordable community rates, and honest care."</p>
                         <div style="margin-top: 2rem; display: flex; align-items: center; gap: 1rem;">
                             <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=James" alt="James Wilson" style="width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--primary); object-fit: cover;">
-                            <div>
-                                <h4 style="font-size: 0.95rem;">James Wilson</h4>
-                                <p style="font-size: 0.8rem; color: var(--text-muted);">Small Biz Owner</p>
+                            <div style="display: flex; flex-direction: column; justify-content: center;">
+                                <h4 style="font-size: 0.95rem; margin: 0; line-height: 1.2;">James Wilson</h4>
+                                <p style="font-size: 0.8rem; color: var(--text-muted); margin: 2px 0 0; line-height: 1.2;">Small Biz Owner</p>
                             </div>
                         </div>
                     </div>
@@ -327,7 +367,7 @@
         <!-- FAQ Section (Section 7) -->
         <section class="section-padding" style="background: var(--bg-alt);">
             <div class="container">
-                <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start;">
+                <div class="responsive-grid" style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start;">
                     <div>
                         <span class="badge">KNOWLEDGE BASE</span>
                         <h2 style="margin-top: 1rem; font-size: 2.5rem;">Frequently Asked <span style="color: var(--primary);">Questions</span></h2>

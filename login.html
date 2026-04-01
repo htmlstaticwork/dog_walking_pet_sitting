@@ -108,6 +108,47 @@
         }
         .divider::before { margin-right: 1rem; }
         .divider::after { margin-left: 1rem; }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            width: 100%;
+            padding: 1rem;
+            background: var(--bg-alt);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            transition: var(--transition);
+            color: var(--text-main);
+        }
+        .social-btn:hover {
+            background: var(--bg-main);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 24px -10px rgba(79, 70, 229, 0.3);
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem;
+            }
+            .auth-card {
+                padding: 2rem 1.5rem;
+            }
+            .social-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -122,11 +163,7 @@
                 <i data-lucide="paw-print"></i>
                 Petly
             </a>
-            <div style="margin-bottom: 1.5rem;">
-                <a href="index.html" style="font-size: 0.85rem; color: var(--text-muted); text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 0.25rem;">
-                    <i data-lucide="arrow-left" size="14"></i> Back to Home
-                </a>
-            </div>
+
             <h2 style="font-size: 1.75rem;">Welcome Back</h2>
             <p style="color: var(--text-muted);">Please enter your details</p>
         </div>
@@ -154,8 +191,10 @@
 
         <div class="divider">or continue with</div>
 
-        <button class="social-btn"><i data-lucide="chrome" size="20"></i> Google</button>
-        <button class="social-btn"><i data-lucide="apple" size="20"></i> Apple</button>
+        <div class="social-grid">
+            <button class="social-btn" style="margin-bottom: 0;"><i data-lucide="chrome" size="20"></i> Google</button>
+            <button class="social-btn" style="margin-bottom: 0;"><i data-lucide="apple" size="20"></i> Apple</button>
+        </div>
 
         <div class="auth-footer">
             Don't have an account? <a href="signup.html" style="color: var(--primary); font-weight: 700;">Sign up</a>

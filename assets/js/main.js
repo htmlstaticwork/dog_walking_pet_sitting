@@ -52,13 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inject desktop buttons into mobile menu
     if (navLinks && headerActions) {
         const signupBtn = headerActions.querySelector('.btn-secondary');
-        const dashboardBtn = headerActions.querySelector('.btn-primary');
         const themeBtnOrig = headerActions.querySelector('#theme-toggle');
         const rtlBtnOrig = headerActions.querySelector('#rtl-toggle');
         
-        if (signupBtn && dashboardBtn) {
+        if (signupBtn) {
             signupBtn.classList.add('desktop-only');
-            dashboardBtn.classList.add('desktop-only');
             if(themeBtnOrig) themeBtnOrig.classList.add('desktop-only');
             if(rtlBtnOrig) rtlBtnOrig.classList.add('desktop-only');
             
@@ -76,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const toggleContainer = document.createElement('div');
             toggleContainer.style.display = 'flex';
             toggleContainer.style.gap = '1rem';
-            toggleContainer.style.marginBottom = '1.5rem';
+            toggleContainer.style.marginBottom = '1rem';
             
             if (rtlBtnOrig) {
                 const rtlClone = rtlBtnOrig.cloneNode(true);
@@ -95,18 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileActions.appendChild(toggleContainer);
             
             const signClone = signupBtn.cloneNode(true);
-            const dashClone = dashboardBtn.cloneNode(true);
             signClone.classList.remove('desktop-only');
-            dashClone.classList.remove('desktop-only');
+            signClone.classList.add('btn-primary'); // Make it stand out in mobile menu
+            signClone.classList.remove('btn-secondary');
             signClone.style.textAlign = 'center';
-            dashClone.style.textAlign = 'center';
-            signClone.style.width = '250px';
-            dashClone.style.width = '250px';
-            signClone.style.alignSelf = 'center';
-            dashClone.style.alignSelf = 'center';
+            signClone.style.width = '100%';
+            signClone.style.alignSelf = 'stretch';
             
             mobileActions.appendChild(signClone);
-            mobileActions.appendChild(dashClone);
             navLinks.appendChild(mobileActions);
         }
     }

@@ -29,7 +29,7 @@
             <div class="header-actions">
                 <button class="toggle-btn" id="rtl-toggle">RTL</button>
                 <button class="toggle-btn" id="theme-toggle"><i data-lucide="moon"></i></button>
-                <a href="signup.html" class="btn btn-secondary">Sign Up</a>
+                <a href="signup.html" class="btn btn-secondary desktop-only">Sign Up</a>
                 <button class="mobile-menu-btn toggle-btn" id="mobile-menu-toggle"><i data-lucide="menu"></i></button>
             </div>
         </div>
@@ -52,36 +52,62 @@
                     <h2>Standard Care Offerings</h2>
                     <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto;">We provide more than just a walk. We provide a tailored lifestyle for your pets.</p>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <div class="card">
-                        <i data-lucide="footprints" size="48" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
-                        <h3>Managed Walking</h3>
-                        <p style="color: var(--text-muted); margin: 1rem 0;">45-60 minute personalized walks with GPS tracking and digital reports.</p>
-                        <ul style="font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
-                            <li><i data-lucide="check" size="14"></i> Freshwater refills</li>
-                            <li><i data-lucide="check" size="14"></i> Paw cleaning</li>
-                            <li><i data-lucide="check" size="14"></i> Post-walk treat</li>
-                        </ul>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2.5rem;">
+                    <!-- Managed Walking -->
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <img src="assets/images/managed_walking.png" alt="Managed Walking" 
+                             style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                        <div style="padding: 2.5rem;">
+                            <h3 style="margin-bottom: 1rem;">Managed Walking</h3>
+                            <p style="color: var(--text-muted); margin: 1rem 0;">45-60 minute personalized walks with GPS tracking and digital reports.</p>
+                            <ul style="font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.75rem;">
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Freshwater refills</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Paw cleaning</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Post-walk treat</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card">
-                        <i data-lucide="home" size="48" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
-                        <h3>In-Home Sitting</h3>
-                        <p style="color: var(--text-muted); margin: 1rem 0;">Professional sitters who stay in your home or provide frequent visits.</p>
-                         <ul style="font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
-                            <li><i data-lucide="check" size="14"></i> Overnight security</li>
-                            <li><i data-lucide="check" size="14"></i> Feeding & meds</li>
-                            <li><i data-lucide="check" size="14"></i> Daily photo updates</li>
-                        </ul>
+                    <!-- In-Home Sitting -->
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <img src="assets/images/in_home_sitting.png" alt="In-Home Sitting" 
+                             style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                        <div style="padding: 2.5rem;">
+                            <h3 style="margin-bottom: 1rem;">In-Home Sitting</h3>
+                            <p style="color: var(--text-muted); margin: 1rem 0;">Professional sitters who stay in your home or provide frequent visits.</p>
+                             <ul style="font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.75rem;">
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Overnight security</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Feeding & meds</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Daily photo updates</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="card">
-                        <i data-lucide="heart" size="48" style="color: var(--primary); margin-bottom: 1.5rem;"></i>
-                        <h3>Specialized Puppy Care</h3>
-                        <p style="color: var(--text-muted); margin: 1rem 0;">Focused attention for growing pups who need socialization and routine.</p>
-                         <ul style="font-size: 0.9rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
-                            <li><i data-lucide="check" size="14"></i> Potty training help</li>
-                            <li><i data-lucide="check" size="14"></i> Social play sessions</li>
-                            <li><i data-lucide="check" size="14"></i> Behavioral monitoring</li>
-                        </ul>
+                    <!-- Specialized Puppy Care -->
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <img src="assets/images/puppy_care.png" alt="Puppy Care" 
+                             style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                        <div style="padding: 2.5rem;">
+                            <h3 style="margin-bottom: 1rem;">Specialized Puppy Care</h3>
+                            <p style="color: var(--text-muted); margin: 1rem 0;">Focused attention for growing pups who need socialization and routine.</p>
+                             <ul style="font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.75rem;">
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Potty training help</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Social play sessions</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Behavioral monitoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Grooming & Spa -->
+                    <div class="card" style="padding: 0; overflow: hidden;">
+                        <img src="assets/images/grooming_spa.png" alt="Grooming & Spa" 
+                             style="width: 100%; height: 250px; object-fit: cover; display: block;">
+                        <div style="padding: 2.5rem;">
+                            <h3 style="margin-bottom: 1rem;">Grooming & Spa</h3>
+                            <p style="color: var(--text-muted); margin: 1rem 0;">Premium pampering for your pets including gentle baths, brushing, and more.</p>
+                             <ul style="font-size: 0.95rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.75rem;">
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Stress-free bath</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Therapeutic brushing</li>
+                                <li style="display: flex; align-items: center; gap: 0.5rem;"><i data-lucide="check" size="18" style="color: var(--primary);"></i> Luxury pet scents</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
