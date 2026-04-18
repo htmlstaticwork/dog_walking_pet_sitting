@@ -37,14 +37,15 @@
         }
 
         .premium-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 30px 60px -20px rgba(79, 70, 229, 0.15);
+            transform: translateY(-15px) scale(1.05);
+            background: var(--bg-main);
+            box-shadow: 0 50px 100px -20px rgba(79, 70, 229, 0.4);
             border-color: var(--primary);
+            z-index: 50;
         }
 
         [data-theme="dark"] .premium-card {
-            background: rgba(30, 41, 59, 0.7);
+            background: rgba(15, 15, 15, 0.8);
             border-color: rgba(255, 255, 255, 0.05);
         }
 

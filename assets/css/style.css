@@ -28,13 +28,13 @@
 }
 
 [data-theme="dark"] {
-    --bg-main: #0f172a;
-    --bg-alt: #1e293b;
+    --bg-main: #000000;
+    --bg-alt: #0a0a0a;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
-    --border: #334155;
-    --card-bg: #1e293b;
-    --header-bg: rgba(15, 23, 42, 0.8);
+    --border: #1f1f1f;
+    --card-bg: #0f0f0f;
+    --header-bg: rgba(0, 0, 0, 0.8);
 }
 
 [dir="rtl"] {
@@ -91,6 +91,7 @@ button, .btn {
     transition: var(--transition);
     border-radius: var(--radius);
     font-weight: 500;
+    will-change: transform, box-shadow;
 }
 
 /* --- Layout Utility --- */
@@ -148,6 +149,7 @@ header .container {
 
 .nav-links a:hover, .nav-links a.active {
     color: var(--primary);
+    transform: translateY(-2px);
 }
 
 .header-actions {
@@ -162,8 +164,10 @@ header .container {
     padding: 0.75rem 1.5rem;
 }
 
-.btn-primary:hover {
-    background-color: var(--primary-hover);
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    padding: 0.75rem 1.5rem;
 }
 
 .btn-secondary {
@@ -171,11 +175,6 @@ header .container {
     color: white;
     padding: 0.75rem 1.5rem;
     border: none;
-}
-
-.btn-secondary:hover {
-    background-color: #1d4ed8;
-    color: white;
 }
 
 /* Global button hover effects */
@@ -188,17 +187,46 @@ header .container {
 }
 
 .btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.4);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 30px -10px rgba(79, 70, 229, 0.5);
+    filter: brightness(1.1);
 }
 
 .btn:active {
-    transform: translateY(-1px);
+    transform: translateY(-2px) scale(0.98);
+}
+
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.btn-primary:hover::after {
+    left: 100%;
+    opacity: 1;
 }
 
 .btn-primary:hover {
     background-color: var(--primary-hover);
-    box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5);
+    box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.6), 0 0 15px rgba(79, 70, 229, 0.4);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.8), 0 0 25px rgba(79, 70, 229, 0.5);
+    background-color: var(--primary);
 }
 
 
@@ -296,20 +324,10 @@ footer {
     transform: translateX(5px);
 }
 
-.btn-primary:hover {
-    filter: brightness(1.1);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
-}
 .btn-outline {
     background: transparent;
     border: 2px solid white;
     color: white;
-}
-.btn-outline:hover {
-    background: white;
-    color: var(--primary);
-    transform: translateY(-2px);
 }
 
 .footer-bottom {
@@ -349,8 +367,8 @@ footer {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(79, 70, 229, 0.3);
+    transform: translateY(-6px) scale(1.1);
+    box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.5);
 }
 
 /* --- Hero --- */
@@ -423,7 +441,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(15, 23, 42, 0.6); /* Semi-transparent dark overlay */
+    background: rgba(0, 0, 0, 0.7); /* Neutral dark overlay */
     z-index: 1;
 }
 
@@ -481,8 +499,14 @@ footer {
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary);
+}
+
+[data-theme="dark"] .card:hover {
+    box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.8), 0 0 20px rgba(79, 70, 229, 0.3);
+    background: #0a0a0a;
     border-color: var(--primary);
 }
 
@@ -525,13 +549,13 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.85) 0%, rgba(15, 23, 42, 0.6) 100%);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%);
     z-index: -1;
     transition: var(--transition);
 }
 
 .card-step:hover .card-step-overlay {
-    background: linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(15, 23, 42, 0.7) 100%);
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .card-step-content {

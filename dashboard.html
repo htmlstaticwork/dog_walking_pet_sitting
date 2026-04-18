@@ -81,9 +81,16 @@
             text-align: left;
         }
 
-        .nav-link:hover, .nav-link.active {
+        .nav-link:hover {
             color: var(--primary);
             background: var(--bg-alt);
+            transform: translateX(8px);
+        }
+        
+        .nav-link.active {
+            color: var(--primary);
+            background: rgba(79, 70, 229, 0.1);
+            font-weight: 700;
         }
 
         .sidebar-footer {
@@ -131,6 +138,18 @@
             padding: 2rem;
             border-radius: 2rem;
             box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .dash-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.15);
+            border-color: var(--primary);
+        }
+
+        [data-theme="dark"] .dash-card:hover {
+            box-shadow: 0 25px 50px -15px rgba(0,0,0,0.5);
+            background: #0a0a0a;
         }
 
         .stats-grid {
@@ -385,7 +404,7 @@
             <section id="overview" class="tab-panel active" role="tabpanel">
                 <!-- Dashboard Hero Banner -->
                 <div class="dash-card dash-hero-card" style="background-image: url('https://images.unsplash.com/photo-1544568100-847a948585b9?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center; min-height: 200px; display: flex; align-items: center; margin-bottom: 2.5rem; position: relative; border: none; overflow: hidden; color: white;">
-                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(15,23,42,0.8), transparent); z-index: 1;"></div>
+                    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(90deg, rgba(0,0,0,0.8), transparent); z-index: 1;"></div>
                     <div style="position: relative; z-index: 2;">
                         <h2 style="font-size: 2rem; color: white;">Welcome Back, Sarah!</h2>
                         <p style="font-size: 1.1rem; opacity: 0.9; margin-top: 0.5rem;">Your pets are happy and scheduled for their afternoon walks.</p>
