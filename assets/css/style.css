@@ -35,6 +35,10 @@
     --border: #1f1f1f;
     --card-bg: #0f0f0f;
     --header-bg: rgba(0, 0, 0, 0.8);
+    
+    /* CTA Contrast Fix */
+    --cta-blue: #3b82f6;
+    --cta-blue-hover: #2563eb;
 }
 
 [dir="rtl"] {
@@ -224,9 +228,14 @@ header .container {
     box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.6), 0 0 15px rgba(79, 70, 229, 0.4);
 }
 
+[data-theme="dark"] .btn-primary {
+    background-color: var(--cta-blue);
+    color: white;
+}
+
 [data-theme="dark"] .btn-primary:hover {
-    box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.8), 0 0 25px rgba(79, 70, 229, 0.5);
-    background-color: var(--primary);
+    box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.5);
+    background-color: var(--cta-blue-hover);
 }
 
 
@@ -713,8 +722,14 @@ footer {
 
 /* --- Dark Mode Overrides --- */
 [data-theme="dark"] .btn-secondary {
-    background-color: var(--bg-alt);
-    border-color: var(--border);
+    background-color: var(--cta-blue);
+    color: white;
+    border: none;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+    background-color: var(--cta-blue-hover);
+    box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.6);
 }
 
 /* --- RTL Support --- */
